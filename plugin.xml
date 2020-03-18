@@ -9,7 +9,7 @@
     <engines>
         <engine name="cordova" version=">=7.0.0"/>
     </engines>
-    <js-module name="Cordova Android Update" src="www/index.js">
+    <js-module name="AndroidUpdate" src="www/index.js">
         <clobbers target="cordova.plugin.AndroidUpdate" />
     </js-module>
 </plugin>

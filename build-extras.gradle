@@ -1,0 +1,25 @@
+buildscript {
+    repositories {
+        maven {
+            url 'https://maven.aliyun.com/repository/jcenter'
+        }
+        maven {
+            url 'https://jitpack.io'
+        }
+    }
+}
+
+allprojects {
+    repositories {
+        maven {
+            url 'https://maven.aliyun.com/repository/jcenter'
+        }
+        maven {
+            url 'https://jitpack.io'
+        }
+    }
+}
+
+dependencies {
+    implementation 'com.github.MZCretin:AutoUpdateProject:2.0.4'
+}
