@@ -29,14 +29,14 @@ public class AndroidUpdate extends CordovaPlugin implements MD5CheckListener, Ap
         } else if ("setConfig".equalsIgnoreCase(action)) {
             String jsonData = args.getString(0);
             AdvanceUpdateConfig config = new Gson().fromJson(jsonData, AdvanceUpdateConfig.class);
-            setConfig(config);
+            setConfig(config,callbackContext);
             Log.d(TAG, "config: " + config.toString());
             return true;
         }
         return false;
     }
 
-    private void setConfig(AdvanceUpdateConfig updateConfig) {
+    private void setConfig(AdvanceUpdateConfig updateConfig, CallbackContext callbackContext) {
         if (!TextUtils.isEmpty(updateConfig.getIconRes()) && !TextUtils.isEmpty(updateConfig.getResourceName())) {
             int iconResId = getResourceId(cordova.getContext(), updateConfig.getIconRes(), updateConfig.getResourceName(), cordova.getContext().getPackageName());
             if (iconResId != -1) {
@@ -55,6 +55,7 @@ public class AndroidUpdate extends CordovaPlugin implements MD5CheckListener, Ap
         }
         updateConfig.setModelClass(new UpdateInfoModel());
         AppUpdateUtils.init(cordova.getActivity().getApplication(), updateConfig);
+        callbackContext.success();
     }
 
     private void checkUpdate(String jsonData, CallbackContext callbackContext) {
