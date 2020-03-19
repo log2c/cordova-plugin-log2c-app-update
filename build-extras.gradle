@@ -22,4 +22,5 @@ allprojects {
 
 dependencies {
     implementation 'com.github.MZCretin:AutoUpdateProject:2.0.4'
+    implementation 'com.google.code.gson:gson:2.+'
 }

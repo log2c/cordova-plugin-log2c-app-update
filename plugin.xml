@@ -7,9 +7,20 @@
         Cordova / Phonegap plugin for android auto update.
     </description>
     <engines>
-        <engine name="cordova" version=">=7.0.0"/>
+        <engine name="cordova" version="&gt;=7.0.0" />
     </engines>
     <js-module name="AndroidUpdate" src="www/index.js">
-        <clobbers target="cordova.plugin.AndroidUpdate" />
+        <clobbers target="AndroidUpdate" />
     </js-module>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="AndroidUpdate">
+                <param name="android-package" value="com.log2c.cordova.plugin.AndroidUpdate" />
+            </feature>
+        </config-file>
+        <source-file src="src/android/AndroidUpdate.java" target-dir="src/com/log2c/cordova/plugin" />
+        <source-file src="src/android/UpdateInfoModel.java" target-dir="src/com/log2c/cordova/plugin" />
+        <source-file src="src/android/AdvanceUpdateConfig.java" target-dir="src/com/log2c/cordova/plugin" />
+        <framework src="build-extras.gradle" custom="true" type="gradleReference" />
+    </platform>
 </plugin>
