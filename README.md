@@ -97,5 +97,16 @@ setConfig (config, successCallback, errorCallback){};
  */
 checkUpdate (downloadInfo, successCallback, errorCallback) {};
 ```
-
 **具体信息参考[AutoUpdateProject README](https://github.com/MZCretin/AutoUpdateProject)**
+
+## 多语言
+
+### iOS
+| key | 对应位置 |
+| --- | --- |
+| app_update_cancel_text | 取消按钮 |
+| app_update_update_text | 升级按钮 |
+| app_update_new_version_text | alert标题  |
+
+
+

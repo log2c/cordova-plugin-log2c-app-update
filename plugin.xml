@@ -9,18 +9,29 @@
     <engines>
         <engine name="cordova" version="&gt;=7.0.0" />
     </engines>
-    <js-module name="AndroidUpdate" src="www/index.js">
-        <clobbers target="AndroidUpdate" />
+    <js-module name="AppUpdate" src="www/index.js">
+        <clobbers target="AppUpdate" />
     </js-module>
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
-            <feature name="AndroidUpdate">
-                <param name="android-package" value="com.log2c.cordova.plugin.AndroidUpdate" />
+            <feature name="AppUpdate">
+                <param name="android-package" value="com.log2c.cordova.plugin.AppUpdate" />
+                <param name="onload" value="true" />
             </feature>
         </config-file>
-        <source-file src="src/android/AndroidUpdate.java" target-dir="src/com/log2c/cordova/plugin" />
+        <source-file src="src/android/AppUpdate.java" target-dir="src/com/log2c/cordova/plugin" />
         <source-file src="src/android/UpdateInfoModel.java" target-dir="src/com/log2c/cordova/plugin" />
         <source-file src="src/android/AdvanceUpdateConfig.java" target-dir="src/com/log2c/cordova/plugin" />
         <framework src="build-extras.gradle" custom="true" type="gradleReference" />
+    </platform>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="AppUpdate">
+                <param name="ios-package" value="AppUpdatePlugin" />
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+        <header-file src="src/ios/AppUpdatePlugin.h" />
+        <source-file src="src/ios/AppUpdatePlugin.m" />
     </platform>
 </plugin>

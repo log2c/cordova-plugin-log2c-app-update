@@ -16,8 +16,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class AndroidUpdate extends CordovaPlugin implements MD5CheckListener, AppDownloadListener {
-    private static final String TAG = AndroidUpdate.class.getSimpleName();
+public class AppUpdate extends CordovaPlugin implements MD5CheckListener, AppDownloadListener {
+    private static final String TAG = AppUpdate.class.getSimpleName();
     private CallbackContext mDownloadCallback = null;
 
     @Override

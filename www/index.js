@@ -67,15 +67,16 @@ var defaultConfig = {
 //     logs,    // 更新日志
 //     versionCode,
 //     versionName,
-//     isForceUpdate,
+//     forceUpdate,
 //     affectCodes,// 影响范围
-//     md5  // APK MD5信息
+//     md5,  // APK MD5信息
+//     iOSUrl   // iOS跳转下载App的地址
 // };
 
 
 module.exports = {
     callNative: function (name, args, successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, 'AndroidUpdate', name, args);
+        cordova.exec(successCallback, errorCallback, 'AppUpdate', name, args);
     },
     /**
      * 设置配置规则
