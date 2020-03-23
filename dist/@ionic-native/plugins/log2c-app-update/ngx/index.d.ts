@@ -48,16 +48,22 @@ export interface Config {
     resourceName?: 'mipmap' | 'drawable';
 }
 export interface DownloadInfo {
-    apkUrl: string;
-    apkSize: number;
-    logs: string;
-    versionCode: number;
-    versionName: string;
-    forceUpdate: boolean;
-    affectCodes: string;
-    md5: string;
+    apkUrl?: string;
+    iOSUrl?: string;
+    apkSize?: number;
+    logs?: string;
+    versionCode?: number;
+    versionName?: string;
+    forceUpdate?: boolean;
+    affectCodes?: string;
+    md5?: string;
 }
-export declare class AndroidUpdate extends IonicNativePlugin {
+export declare class AppUpdate extends IonicNativePlugin {
+    /**
+     * 配置
+     * Android Only
+     * @param config 配置信息
+     */
     setConfig(config: Config): Promise<any>;
     checkUpdate(downloadInfo: DownloadInfo): Promise<any>;
 }

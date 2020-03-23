@@ -59,27 +59,33 @@ export interface Config {
   resourceName?: 'mipmap' | 'drawable';
 }
 export interface DownloadInfo {
-  apkUrl: string;
-  apkSize: number;
-  logs: string;    // 更新日志
-  versionCode: number;
-  versionName: string;
-  forceUpdate: boolean;
-  affectCodes: string; // 影响范围
-  md5: string;  // APK MD5信息
+  apkUrl?: string;  // Android Only, Android平台必需
+  iOSUrl?: string;  // iOS Only, iOS平台必需
+  apkSize?: number;
+  logs?: string;    // 更新日志
+  versionCode?: number;
+  versionName?: string;
+  forceUpdate?: boolean;
+  affectCodes?: string; // 影响范围
+  md5?: string;  // APK MD5信息
 }
 
 
 @Plugin({
-  pluginName: 'AndroidUpdate',
+  pluginName: 'AppUpdate',
   plugin: 'cordova-plugin-log2c-app-update',
-  pluginRef: 'AndroidUpdate',
+  pluginRef: 'AppUpdate',
   repo: 'https://github.com/log2c/cordova-plugin-log2c-app-update',
-  platforms: ['Android']
+  platforms: ['Android', 'ios']
 })
 @Injectable()
-export class AndroidUpdate extends IonicNativePlugin {
+export class AppUpdate extends IonicNativePlugin {
 
+  /**
+   * 配置
+   * Android Only
+   * @param config 配置信息
+   */
   @Cordova()
   setConfig(config: Config): Promise<any> {
     return;
