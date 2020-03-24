@@ -15,7 +15,7 @@
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
             <feature name="AppUpdate">
-                <param name="android-package" value="com.log2c.cordova.plugin.AppUpdate" />
+                <param name="android-package" value="com.log2c.cordova.plugin.appupdate.AppUpdate" />
                 <param name="onload" value="true" />
             </feature>
         </config-file>
