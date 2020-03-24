@@ -1,4 +1,4 @@
-package com.log2c.cordova.plugin;
+package com.log2c.cordova.plugin.appupdate;
 
 import com.cretin.www.cretinautoupdatelibrary.model.LibraryUpdateEntity;
 

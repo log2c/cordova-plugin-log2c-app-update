@@ -1,4 +1,4 @@
-package com.log2c.cordova.plugin;
+package com.log2c.cordova.plugin.appupdate;
 
 import android.content.Context;
 import android.support.annotation.IdRes;

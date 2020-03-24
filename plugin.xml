@@ -19,9 +19,9 @@
                 <param name="onload" value="true" />
             </feature>
         </config-file>
-        <source-file src="src/android/AppUpdate.java" target-dir="src/com/log2c/cordova/plugin" />
-        <source-file src="src/android/UpdateInfoModel.java" target-dir="src/com/log2c/cordova/plugin" />
-        <source-file src="src/android/AdvanceUpdateConfig.java" target-dir="src/com/log2c/cordova/plugin" />
+        <source-file src="src/android/AppUpdate.java" target-dir="src/com/log2c/cordova/plugin/appupdate" />
+        <source-file src="src/android/UpdateInfoModel.java" target-dir="src/com/log2c/cordova/plugin/appupdate" />
+        <source-file src="src/android/AdvanceUpdateConfig.java" target-dir="src/com/log2c/cordova/plugin/appupdate" />
         <framework src="build-extras.gradle" custom="true" type="gradleReference" />
     </platform>
     <platform name="ios">

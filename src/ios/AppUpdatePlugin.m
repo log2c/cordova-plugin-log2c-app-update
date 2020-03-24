@@ -14,6 +14,9 @@
     }
 
     NSString *logs = [downloadInfo objectForKey:@"logs"];
+    if (logs == nil) {
+        logs = @"";
+    }
     BOOL isForceUpdate = [[downloadInfo objectForKey:@"forceUpdate"] boolValue];
 
     NSString *_url = [downloadInfo objectForKey:@"iOSUrl"];
