@@ -1,7 +1,7 @@
 package com.log2c.cordova.plugin.appupdate;
 
+import android.app.Application;
 import android.content.Context;
-import android.support.annotation.IdRes;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -29,16 +29,16 @@ public class AppUpdate extends CordovaPlugin implements MD5CheckListener, AppDow
         } else if ("setConfig".equalsIgnoreCase(action)) {
             String jsonData = args.getString(0);
             AdvanceUpdateConfig config = new Gson().fromJson(jsonData, AdvanceUpdateConfig.class);
-            setConfig(config,callbackContext);
+            setConfig(config, cordova.getActivity().getApplication(), callbackContext);
             Log.d(TAG, "config: " + config.toString());
             return true;
         }
         return false;
     }
 
-    private void setConfig(AdvanceUpdateConfig updateConfig, CallbackContext callbackContext) {
+    public static void setConfig(AdvanceUpdateConfig updateConfig, Application context, CallbackContext callbackContext) {
         if (!TextUtils.isEmpty(updateConfig.getIconRes()) && !TextUtils.isEmpty(updateConfig.getResourceName())) {
-            int iconResId = getResourceId(cordova.getContext(), updateConfig.getIconRes(), updateConfig.getResourceName(), cordova.getContext().getPackageName());
+            int iconResId = getResourceId(context, updateConfig.getIconRes(), updateConfig.getResourceName(), context.getPackageName());
             if (iconResId != -1) {
                 updateConfig.setNotificationIconRes(iconResId);
             } else {
@@ -54,8 +54,10 @@ public class AppUpdate extends CordovaPlugin implements MD5CheckListener, AppDow
             }
         }
         updateConfig.setModelClass(new UpdateInfoModel());
-        AppUpdateUtils.init(cordova.getActivity().getApplication(), updateConfig);
-        callbackContext.success();
+        AppUpdateUtils.init(context, updateConfig);
+        if (callbackContext != null) {
+            callbackContext.success();
+        }
     }
 
     private void checkUpdate(String jsonData, CallbackContext callbackContext) {
@@ -137,7 +139,6 @@ public class AppUpdate extends CordovaPlugin implements MD5CheckListener, AppDow
      * @param pPackageName  包名
      * @return ResID
      */
-    @IdRes
     public static int getResourceId(Context context, String pVariableName, String pResourceName, String pPackageName) {
         try {
             return context.getResources().getIdentifier(pVariableName, pResourceName, pPackageName);
