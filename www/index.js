@@ -82,10 +82,7 @@ module.exports = {
      * 设置配置规则
      */
     setConfig: function (config, successCallback, errorCallback) {
-        this.callNative('setConfig', [{
-            ...defaultConfig,
-            ...config
-        }], successCallback, errorCallback);
+        this.callNative('setConfig', [Object.assign(defaultConfig, config)], successCallback, errorCallback);
     },
 
     /**
